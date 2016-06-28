@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+   <title> - microblog</title>
+<script   src="static/jquery-2.2.4.min.js"></script>
+
+<body>
+  <script>
+    var source = new EventSource("{{ url_for('sse.stream') }}");
+    source.addEventListener('greeting', function(event) {
+        var data = JSON.parse(event.data);
+        console.log("The server says " + data.message);
+         $("#container").append(data.message);
+    }, false);
+    source.addEventListener('error', function(event) {
+        alert("Failed to connect to event stream. Is Redis running?");
+    }, false);
+  </script>
+  <div id="container">
+  <p> Results : </p>
+  </div>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+ {% extends "base.html" %}
+ {% block content %}
+<script>
+function blah(){
+  var value = document.getElementsByName('package_name')[0].value;
+  window.location = "http://127.0.0.1/list?package_name="+value;
+}
+</script>
+<div id="content" style="text-align: center;">
+
+  <p> Enter the Package Name of the App to Instrument!</p>
+  <p> To do this , you can either try : frida-ps -U </p>
+  <p> Or ./aapt dump badging  path_to_apk | awk -v FS="'" '/package: name=/{print $2}' </p>
+  <p> aapt binary will be present in the build tools dir of your android sdk , please install android sdk if you dont have it ! </p>
+  <input type="text" name="package_name" value="com.jni.anto.kalip" class = "txtbox"  style="
+    height: 40px;
+    width: 400px;
+    font-size: 20px;
+    text-align: center;"/>
+</br>
+</br>
+  <button class="test" style="
+    height: 50px;
+    width: 100px;
+    border-radius: 5px;" onclick="blah()"> OK </button> 
+  </div>
+ {% endblock %}
+

@@ -1,0 +1,58 @@
+ {% extends "base.html" %}
+ {% block content %}
+<style type="text/css" media="screen">
+    body {
+        overflow: hidden;
+    }
+    #editor {
+        width:600px;
+        height:300px;
+    }
+</style>
+<div id="left" style="float:left;">
+<pre id="editor">{{ content }}
+</pre>
+<button type="submit" id="submit" value="Submit" onClick="blah();">Submit</button>
+<script src="static/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/twilight");
+    editor.session.setMode("ace/mode/javascript");
+    var matches = /package_name=([^&#=]*)/.exec(window.location.search);
+    var param1 = matches[1];
+
+
+    function blah(){
+        var editor = ace.edit("editor");
+       $.ajax({
+                type : "POST",
+                url : "lol?package_name="+param1,
+                data: JSON.stringify(editor.getValue(), null, '\t'),
+                contentType: 'application/json;charset=UTF-8',
+                success: function(result) {
+                    console.log(result);
+                }
+            });
+
+
+    }
+
+</script>
+</div>
+<div id="right" style="float:right;">
+<iframe src="http://127.0.0.1/update" style="width:500px;height:500px;border:none;"></iframe>
+</div>
+
+<div id="instructions" style="float:left;">
+<hr>
+<p>Doesn't Work ? : </p>
+<ul>
+<li>1 ) Check if Redis-server is running ! </li>
+<li>2 ) Check if Frida-server is running ! </li>
+<li> 3 ) Check app Package name and its running ! </li>
+<li> 4 ) Look at the Console Logs ! </li>
+<li> 5 ) File a bug @ github </li>
+</ul>
+</div>
+
+{% endblock %}
