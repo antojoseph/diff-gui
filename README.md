@@ -42,13 +42,17 @@ Now , you can start instrumenting with the avaliable modules !
 Happy Hacking :)
 
 Initial Screen  - Enter Package name here !
+
 ![alt tag](https://raw.githubusercontent.com/antojoseph/diff-gui/master/readme_images/screen1.png)
 
 Select the Module you want to use , or add modules by just adding js scripts to modules folder
+
 ![alt tag](https://raw.githubusercontent.com/antojoseph/diff-gui/master/readme_images/screen2.png)
 
 Run the script or make any changes in the IDE and get Results in the same screen !
+
 ![alt tag](https://raw.githubusercontent.com/antojoseph/diff-gui/master/readme_images/screen3.png)
 
 You can also do native hooking as shown below !
+
 ![alt tag](https://raw.githubusercontent.com/antojoseph/diff-gui/master/readme_images/screen4.png)
