@@ -1,8 +1,0 @@
-Interceptor.attach(Module.findExportByName("lib.so" , "somefunction"), {
-    onEnter: function(args) {
-        args[1] = ptr(0);
-        send("somefunction("+Memory.readCString(args[0])+","+args[1]+")");
-    },
-    onLeave:function(retval){
-
-    } });
