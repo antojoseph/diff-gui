@@ -1,0 +1,19 @@
+ {% extends "base.html" %}
+ {% block content %}
+<form method="get" action="/list">
+  <div style="text-align:center;">
+    <p> 
+      <select name="package_name">
+      {% for pack in packages %}
+      <option value="{{pack.name}}">[{{ pack.pid }}] - {{ pack.name }}</option>
+      {% endfor %}
+      </select>
+    </p>
+    <p>
+      <input type="submit" value="inject into the process">
+    </p>
+  </div>
+  
+</form>
+{% endblock %}
+
