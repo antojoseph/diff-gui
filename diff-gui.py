@@ -45,10 +45,9 @@ def show_packages():
                 # check remote ip address
                 try:
                     socket.inet_aton(remote)
-                    print "adding remote device to device manager"
-                    frida.get_device_manager().add_remote_device(remote)
-                    print "getting remote device"
-                    device=frida.get_remote_device()
+                    print "adding remote device to device manager : ",remote
+                    device=frida.get_device_manager().add_remote_device(remote)
+                    print "remote device : ", device
                 except socket.error:
                     return render_template('intro.html')
             else:
