@@ -20,16 +20,14 @@ a {text-decoration: none; }
 
 </style>
 
-<h1>Avaliable Modules!</h1>
-
-
+<h1>Available Modules!</h1>
 
 
 <div id ="thelist">
   <ul>
       {% for post in posts %}
             
-          <li><a href=/hack?type=attack&username={{ post }}&package_name={{package_name}}>{{ post }}</a></li>
+          <li><a href=/hack?type=attack&module={{ post }}&package_name={{package_name}}>{{ post }}</a></li>
       {% endfor %}
   </ul>
 </div>
