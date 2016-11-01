@@ -41,7 +41,7 @@ def show_packages():
     try:
         remote = request.args.get('remote')
         if device == None:
-            if remote != None:        
+            if len(remote) != 0:
                 # check remote ip address
                 try:
                     socket.inet_aton(remote)
