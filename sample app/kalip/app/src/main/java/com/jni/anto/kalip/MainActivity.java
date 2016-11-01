@@ -14,8 +14,15 @@ import javax.crypto.spec.SecretKeySpec;
 import javax.crypto.*;
 import java.security.*;
 
-
 public class MainActivity extends AppCompatActivity {
+
+
+    static String source="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    static String target="Q9A8ZWS7XEDC6RFVT5GBY4HNU3J2MI1KO0LP";
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,6 +94,20 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
+
+        Button bttnobfuscate = (Button) findViewById(R.id.button7);
+        bttnobfuscate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String password = "123456";
+                    String result = obfuscate(password);
+                Toast.makeText(getApplicationContext(),"Obfuscating : "+password + "Result : "+result,Toast.LENGTH_LONG).show();
+
+            }
+        });
+
 
 
         Button encrypt = (Button) findViewById(R.id.button6);
@@ -163,4 +184,29 @@ public class MainActivity extends AppCompatActivity {
         byte[] decrypted = cipher.doFinal(encrypted);
         return decrypted;
     }
+
+
+
+    public static String obfuscate(String s) {
+        char[] result= new char[10];
+        for (int i=0;i<s.length();i++) {
+            char c=s.charAt(i);
+            int index=source.indexOf(c);
+            result[i]=target.charAt(index);
+        }
+
+        return new String(result);
+    }
+
+    public static String unobfuscate(String s) {
+        char[] result= new char[10];
+        for (int i=0;i<s.length();i++) {
+            char c=s.charAt(i);
+            int index=target.indexOf(c);
+            result[i]=source.charAt(index);
+        }
+
+        return new String(result);
+    }
+
 }
