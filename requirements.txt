@@ -1,0 +1,5 @@
+redis
+flask 
+jinja2 
+frida
+requests
